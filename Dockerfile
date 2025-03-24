@@ -1,4 +1,4 @@
-ARG INSTALLER=yarn
+ARG INSTALLER=pnpm
 
 FROM node:20-alpine AS base
 

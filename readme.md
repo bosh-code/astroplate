@@ -67,26 +67,32 @@
 ### 📦 Dependencies
 
 - astro v5.5+
-- node v20.10+
-- yarn v1.22+
+- node v22.11+
+- pnpm v10.6.5+
 - tailwind v4+
 
 ### 👉 Install Dependencies
 
 ```bash
-yarn install
+pnpm install
 ```
 
 ### 👉 Development Command
 
 ```bash
-yarn run dev
+pnpm dev
+```
+
+### 👉 Preview Command
+
+```bash
+pnpm preview
 ```
 
 ### 👉 Build Command
 
 ```bash
-yarn run build
+pnpm build
 ```
 
 ### 👉 Build and Run With Docker
@@ -113,8 +119,11 @@ docker run -it --rm astroplate ash
 
 ## 🐞 Reporting Issues
 
-We use GitHub Issues as the official bug tracker for this Template. Please Search [existing issues](https://github.com/zeon-studio/astroplate/issues). It’s possible someone has already reported the same problem.
-If your problem or idea has not been addressed yet, feel free to [open a new issue](https://github.com/zeon-studio/astroplate/issues).
+We use GitHub Issues as the official bug tracker for this Template. Please
+Search [existing issues](https://github.com/zeon-studio/astroplate/issues). It’s possible someone has already reported
+the same problem.
+If your problem or idea has not been addressed yet, feel free
+to [open a new issue](https://github.com/zeon-studio/astroplate/issues).
 
 <!-- licence -->
 
@@ -124,8 +133,10 @@ Copyright (c) 2023 - Present, Designed & Developed by [Zeon Studio](https://zeon
 
 **Code License:** Released under the [MIT](https://github.comzeon-studio/astroplate/blob/main/LICENSE) license.
 
-**Image license:** The images are only for demonstration purposes. They have their license, we don't have permission to share those images.
+**Image license:** The images are only for demonstration purposes. They have their license, we don't have permission to
+share those images.
 
 ## 💻 Need Custom Development Services?
 
-If you need a custom theme, theme customization, or complete website development services from scratch you can [Hire Us](https://zeon.studio/).
+If you need a custom theme, theme customization, or complete website development services from scratch you
+can [Hire Us](https://zeon.studio/).
