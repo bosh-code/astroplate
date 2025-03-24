@@ -10,8 +10,8 @@ const { testimonial } = Astro.props;
       <div class="container">
         <div class="row">
           <div class="mx-auto mb-12 text-center md:col-10 lg:col-8 xl:col-6">
-            <h2 set:html={markdownify(testimonial.data.title)} class="mb-4" />
-            <p set:html={markdownify(testimonial.data.description)} />
+            <h2 class="mb-4">{markdownify(testimonial.data.title)}</h2>
+            <p>{markdownify(testimonial.data.description)}</p>
           </div>
           <div class="col-12">
             <div class="swiper testimonial-slider">
@@ -39,10 +39,9 @@ const { testimonial } = Astro.props;
                             />
                           </svg>
                         </div>
-                        <blockquote
-                          class="mt-8"
-                          set:html={markdownify(item.content)}
-                        />
+                        <blockquote class="mt-8">
+                          {markdownify(item.content)}
+                        </blockquote>
                         <div class="mt-11 flex items-center">
                           <div class="text-text-dark dark:text-white">
                             <ImageMod
@@ -55,19 +54,17 @@ const { testimonial } = Astro.props;
                             />
                           </div>
                           <div class="ml-4">
-                            <h3
-                              set:text={item.name}
-                              class="h5 font-primary font-semibold"
-                            />
-                            <p
-                              set:text={item.designation}
-                              class="text-text-dark dark:text-white"
-                            />
+                            <h3 class="h5 font-primary font-semibold">
+                              {item.name}
+                            </h3>
+                            <p class="text-text-dark dark:text-white">
+                              {item.designation}
+                            </p>
                           </div>
                         </div>
                       </div>
                     </div>
-                  )
+                  ),
                 )}
               </div>
               <div class="testimonial-slider-pagination mt-9 flex items-center justify-center text-center" />

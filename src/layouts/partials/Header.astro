@@ -22,7 +22,9 @@ const { navigation_button, settings } = config;
 const { pathname } = Astro.url;
 ---
 
-<header class={`header z-30 ${settings.sticky_header && "sticky top-0"}`}>
+<header
+  class:list={[`header z-30`, `${settings.sticky_header && "sticky top-0"}`]}
+>
   <nav class="navbar container">
     <!-- logo -->
     <div class="order-0">
@@ -56,14 +58,18 @@ const { pathname } = Astro.url;
             {menu.hasChildren ? (
               <li class="nav-item nav-dropdown group relative">
                 <span
-                  class={`nav-link inline-flex items-center ${
-                    menu.children?.map(({ url }) => url).includes(pathname) ||
-                    menu.children
-                      ?.map(({ url }) => `${url}/`)
-                      .includes(pathname)
-                      ? "active"
-                      : ""
-                  }`}
+                  class:list={[
+                    `nav-link inline-flex items-center`,
+                    {
+                      active:
+                        menu.children
+                          ?.map(({ url }) => url)
+                          .includes(pathname) ||
+                        menu.children
+                          ?.map(({ url }) => `${url}/`)
+                          .includes(pathname),
+                    },
+                  ]}
                 >
                   {menu.name}
                   <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20">
@@ -76,11 +82,14 @@ const { pathname } = Astro.url;
                       <a
                         href={child.url}
                         aria-label={child.name}
-                        class={`nav-dropdown-link block ${
-                          (pathname === `${child.url}/` ||
-                            pathname === child.url) &&
-                          "active"
-                        }`}
+                        class:list={[
+                          `nav-dropdown-link block`,
+                          `${
+                            (pathname === `${child.url}/` ||
+                              pathname === child.url) &&
+                            "active"
+                          }`,
+                        ]}
                       >
                         {child.name}
                       </a>
@@ -92,10 +101,13 @@ const { pathname } = Astro.url;
               <li class="nav-item">
                 <a
                   href={menu.url}
-                  class={`nav-link block ${
-                    (pathname === `${menu.url}/` || pathname === menu.url) &&
-                    "active"
-                  }`}
+                  class:list={[
+                    `nav-link block`,
+                    `${
+                      (pathname === `${menu.url}/` || pathname === menu.url) &&
+                      "active"
+                    }`,
+                  ]}
                 >
                   {menu.name}
                 </a>

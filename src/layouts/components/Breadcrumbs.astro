@@ -23,7 +23,7 @@ paths.forEach((label: string, i: number) => {
 });
 ---
 
-<nav aria-label="Breadcrumb" class={className}>
+<nav aria-label="Breadcrumb" class:list={className}>
   <ol class="inline-flex" role="list">
     {
       parts.map(({ label, ...attrs }, index) => (
