@@ -12,6 +12,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "format": "prettier -w ./src",
+    "mdlint": "markdownlint-cli2 \"./src/**/*.md\" \"#node_modules\"",
     "generate-json": "node scripts/jsonGenerator.js",
     "remove-darkmode": "node scripts/removeDarkmode.js && pnpm format"
   },
@@ -46,6 +47,7 @@
     "@types/react": "19.0.9",
     "@types/react-dom": "19.0.3",
     "eslint": "^9.20.1",
+    "markdownlint-cli2": "^0.17.2",
     "prettier": "^3.5.1",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.11",

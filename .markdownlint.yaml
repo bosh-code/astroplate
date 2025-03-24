@@ -1,0 +1,11 @@
+---
+default: true
+
+# Path to configuration file to extend
+extends: null
+
+# Ignore line-length
+MD013: false
+
+# Disallow HTML in md
+MD033": false
