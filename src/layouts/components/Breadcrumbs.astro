@@ -12,15 +12,17 @@ let parts = [
   },
 ];
 
-paths.forEach((label: string, i: number) => {
-  const href = `/${paths.slice(0, i + 1).join("/")}`;
-  label !== "page" &&
+// Add items to paths when the label is not "page".
+paths
+  .filter((label) => label !== "page")
+  .forEach((label, i) => {
+    const href = `/${paths.slice(0, i + 1).join("/")}`;
     parts.push({
       label: humanize(label.replace(".html", "").replace(/[-_]/g, " ")) || "",
       href,
       "aria-label": Astro.url.pathname === href ? "page" : undefined,
     });
-});
+  });
 ---
 
 <nav aria-label="Breadcrumb" class:list={className}>
