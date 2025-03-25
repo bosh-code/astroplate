@@ -2,6 +2,8 @@
 import config from "@/config/config.json";
 import ImageMod from "./ImageMod.astro";
 
+type LogoDimension = `${number}px`;
+
 const { src, srcDarkmode }: { src?: string; srcDarkmode?: string } =
   Astro.props;
 const {
@@ -14,13 +16,16 @@ const {
 }: {
   logo: string;
   logo_darkmode: string;
-  logo_width: any;
-  logo_height: any;
+  logo_width: LogoDimension;
+  logo_height: LogoDimension;
   logo_text: string;
   title: string;
 } = config.site;
 
 const { theme_switcher }: { theme_switcher: boolean } = config.settings;
+
+const logoWidth = parseInt(logo_width.replace("px", ""), 10);
+const logoHeight = parseInt(logo_height.replace("px", ""), 10);
 ---
 
 <a href="/" class="navbar-brand inline-block">
@@ -30,12 +35,12 @@ const { theme_switcher }: { theme_switcher: boolean } = config.settings;
         <ImageMod
           src={src ? src : logo}
           class:list={[`inline-block`, `${theme_switcher && "dark:hidden"}`]}
-          width={logo_width.replace("px", "") * 2}
-          height={logo_height.replace("px", "") * 2}
+          width={logoWidth * 2}
+          height={logoHeight * 2}
           alt={title}
           style={{
-            height: logo_height.replace("px", "") + "px",
-            width: logo_width.replace("px", "") + "px",
+            height: `${logoHeight}px`,
+            width: `${logoWidth}px`,
           }}
           format="webp"
         />
@@ -43,12 +48,12 @@ const { theme_switcher }: { theme_switcher: boolean } = config.settings;
           <ImageMod
             src={srcDarkmode ? srcDarkmode : logo_darkmode}
             class:list={"hidden dark:inline-block"}
-            width={logo_width.replace("px", "") * 2}
-            height={logo_height.replace("px", "") * 2}
+            width={logoWidth * 2}
+            height={logoHeight * 2}
             alt={title}
             style={{
-              height: logo_height.replace("px", "") + "px",
-              width: logo_width.replace("px", "") + "px",
+              height: `${logoHeight}px`,
+              width: `${logoWidth}px`,
             }}
             format="webp"
           />
