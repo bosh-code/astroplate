@@ -4,14 +4,18 @@ import Share from "@/components/Share.astro";
 import Disqus from "@/helpers/Disqus";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import dateFormat from "@/lib/utils/dateFormat";
-import similarItems from "@/lib/utils/similarItems";
+import similarItems, { type Item } from "@/lib/utils/similarItems";
 import { humanize, markdownify, slugify } from "@/lib/utils/textConverter";
 import { render } from "astro:content";
 import { FaRegClock, FaRegFolder, FaRegUserCircle } from "react-icons/fa";
 import ImageMod from "./components/ImageMod.astro";
 
+interface BlogPostProps {
+  post: Item;
+}
+
 const COLLECTION_FOLDER = "blog";
-const { post } = Astro.props;
+const { post } = Astro.props as BlogPostProps;
 
 const posts = await getSinglePage(COLLECTION_FOLDER);
 const similarPosts = similarItems(post, posts);
