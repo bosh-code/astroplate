@@ -2,6 +2,7 @@
 dist/
 .output/
 .json/
+tsconfig.tsbuildinfo
 
 # dependencies
 node_modules/
