@@ -3,7 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "noImplicitAny": true,
-    "target": "es6",
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
     "allowJs": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -11,6 +16,7 @@
     "jsx": "react",
     "isolatedModules": true,
     "incremental": true,
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "paths": {
       "@/components/*": [
