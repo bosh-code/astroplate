@@ -24,10 +24,10 @@ paths.forEach((label: string, i: number) => {
 ---
 
 <nav aria-label="Breadcrumb" class:list={className}>
-  <ol class="inline-flex" role="list">
+  <ol class="inline-flex">
     {
       parts.map(({ label, ...attrs }, index) => (
-        <li class="mx-1 capitalize" role="listitem">
+        <li class="mx-1 capitalize">
           {index > 0 && <span class="inlin-block mr-1">/</span>}
           {index !== parts.length - 1 ? (
             <a class="text-primary dark:text-darkmode-primary" {...attrs}>
