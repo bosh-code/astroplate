@@ -1,3 +1,4 @@
+// TODO: Re-write this in ts and call with tsx
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";

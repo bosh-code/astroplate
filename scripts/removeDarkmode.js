@@ -1,5 +1,6 @@
-const fs = require("fs");
-const path = require("path");
+// TODO: Re-write this in ts and call with tsx
+const fs = require("node:fs");
+const path = require("node:path");
 
 (function () {
   const rootDirs = ["src/pages", "src/hooks", "src/layouts", "src/styles"];
@@ -27,6 +28,7 @@ const path = require("path");
   });
 
   deleteAssetList.forEach(deleteAsset);
+
   function deleteAsset(asset) {
     try {
       fs.unlinkSync(asset);
