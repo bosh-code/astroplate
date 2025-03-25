@@ -33,11 +33,11 @@ export const titleify = (content: string) => {
 
 // plainify
 export const plainify = (content: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- TODO: marked.parse() can be sync or async.
   const parseMarkdown: any = marked.parse(content);
   const filterBrackets = parseMarkdown.replace(/<\/?[^>]+(>|$)/gm, "");
   const filterSpaces = filterBrackets.replace(/[\r\n]\s*[\r\n]/gm, "");
-  const stripHTML = htmlEntityDecoder(filterSpaces);
-  return stripHTML;
+  return htmlEntityDecoder(filterSpaces);
 };
 
 // strip entities for plainify

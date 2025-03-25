@@ -16,7 +16,7 @@ const allTags = await getAllTaxonomy(BLOG_FOLDER, "tags");
     <div class="container text-center">
       <ul>
         {
-          tags.map((tag: any) => {
+          tags.map((tag: string) => {
             const count = allTags.filter((c) => c === tag).length;
             return (
               <li class="m-3 inline-block">
