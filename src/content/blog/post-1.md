@@ -4,9 +4,9 @@ meta_title: "Next.js Serverless Guide"
 description: "Learn how to combine Next.js with serverless functions for high-performance web apps."
 date: 2025-11-01T09:00:00Z
 image: "/images/image-placeholder.png"
-categories: [ "Frontend", "Cloud" ]
+categories: [ "Frontend", "Cloud", "Backend" ]
 author: "John Doe"
-tags: [ "nextjs", "serverless", "aws-lambda" ]
+tags: [ "nextjs", "serverless", "aws-lambda", "backend" ]
 draft: false
 ---
 

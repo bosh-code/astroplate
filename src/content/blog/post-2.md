@@ -2,9 +2,9 @@
 title: "Why Tailwind CSS is Revolutionizing Frontend Development"
 meta_title: "Tailwind CSS Benefits"
 description: "A deep dive into utility-first CSS and how it speeds up UI development."
-date: 2025-11-05T14:30:00Z
+date: 2025-11-02T09:00:00Z
 image: "/images/image-placeholder.png"
-categories: [ "CSS", "Design" ]
+categories: [ "CSS", "Design", "Frontend" ]
 author: "John Doe"
 tags: [ "tailwind", "frontend", "productivity" ]
 draft: false

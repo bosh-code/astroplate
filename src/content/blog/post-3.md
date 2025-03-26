@@ -2,11 +2,11 @@
 title: "Data Fetching Strategies in Modern React Applications"
 meta_title: "React Data Fetching"
 description: "Compare SWR, React Query, and useEffect for optimal data loading."
-date: 2025-11-10T11:15:00Z
+date: 2025-11-03T09:00:00Z
 image: "/images/image-placeholder.png"
-categories: [ "React", "Performance" ]
-author: "Anonymous"
-tags: [ "react", "data-fetching", "performance" ]
+categories: [ "Frontend", "React", "Performance" ]
+author: "Guest Author"
+tags: [ "react", "frontend", "data-fetching", "performance" ]
 draft: false
 ---
 

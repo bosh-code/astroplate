@@ -2,7 +2,7 @@
 title: "Authentication Best Practices for Next.js Applications"
 meta_title: "Next.js Auth Guide"
 description: "Secure your apps with NextAuth.js and OAuth providers."
-date: 2024-12-15T16:45:00Z
+date: 2025-11-04T09:00:00Z
 image: "/images/image-placeholder.png"
 categories: [ "Security", "Backend" ]
 author: "Guest Author"
