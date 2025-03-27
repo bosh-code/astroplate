@@ -11,7 +11,7 @@
     "build": "pnpm generate-json && astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "lint": "eslint \"scripts/**.*\" \"src/**/*.{js,ts,astro}\"",
+    "lint": "eslint \"scripts/**.*\" \"src/**/*.{js,ts,tsx,astro}\"",
     "format": "prettier -w ./src",
     "mdlint": "markdownlint-cli2 \"./src/**/*.md\" \"#node_modules\"",
     "generate-json": "node scripts/jsonGenerator.js",
