@@ -15,6 +15,7 @@ export default tseslint.config(
       "@stylistic/one-var-declaration-per-line": ["error", "always"],
       "one-var": ["error", "never"],
       "astro/sort-attributes": "off",
+      "astro/no-set-html-directive": "off",
     },
   },
 );
