@@ -10,8 +10,8 @@ const { testimonial } = Astro.props;
       <div class="container">
         <div class="row">
           <div class="mx-auto mb-12 text-center md:col-10 lg:col-8 xl:col-6">
-            <h2 class="mb-4">{markdownify(testimonial.data.title)}</h2>
-            <p>{markdownify(testimonial.data.description)}</p>
+            <h2 set:html={markdownify(testimonial.data.title)} class="mb-4" />
+            <p set:html={markdownify(testimonial.data.description)} />
           </div>
           <div class="col-12">
             <div class="swiper testimonial-slider">
@@ -39,9 +39,10 @@ const { testimonial } = Astro.props;
                             />
                           </svg>
                         </div>
-                        <blockquote class="mt-8">
-                          {markdownify(item.content)}
-                        </blockquote>
+                        <blockquote
+                          class="mt-8"
+                          set:html={markdownify(item.content)}
+                        />
                         <div class="mt-11 flex items-center">
                           <div class="text-text-dark dark:text-white">
                             <ImageMod
