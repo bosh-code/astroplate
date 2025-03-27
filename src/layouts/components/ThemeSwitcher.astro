@@ -3,15 +3,22 @@ import config from "@/config/config.json";
 
 const {
   theme_switcher,
-  default_theme,
-}: { theme_switcher: boolean; default_theme: string } = config.settings;
+}: {
+  theme_switcher: boolean;
+  default_theme: string;
+} = config.settings;
 const { className }: { className?: string } = Astro.props;
 ---
 
 {
   theme_switcher && (
-    <div class={`theme-switcher ${className}`}>
-      <input id="theme-switcher" data-theme-switcher type="checkbox" />
+    <div class:list={[`theme-switcher`, `${className}`]}>
+      <input
+        aria-label="Switch Theme"
+        id="theme-switcher"
+        data-theme-switcher
+        type="checkbox"
+      />
       <label for="theme-switcher">
         <span class="sr-only">theme switcher</span>
         <span>
@@ -46,22 +53,27 @@ const { className }: { className?: string } = Astro.props;
 
 <script>
   import { settings } from "@/config/config.json";
+
   const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
 
   matchMedia.addEventListener("change", () =>
-    toggleTheme(document.querySelectorAll("[data-theme-switcher]"))
+    toggleTheme(document.querySelectorAll("[data-theme-switcher]")),
   );
 
   function toggleTheme(themeSwitch: NodeListOf<Element>) {
-    const defaulTheme =
+    const defaultTheme =
       settings.default_theme === "system"
         ? matchMedia.matches
           ? "dark"
           : "light"
         : settings.default_theme;
-    const currentTheme = localStorage.getItem("theme") || defaulTheme;
+    const currentTheme = localStorage.getItem("theme") || defaultTheme;
     const isDarkTheme = currentTheme === "dark";
-    themeSwitch.forEach((sw: any) => (sw.checked = isDarkTheme));
+    themeSwitch.forEach((sw) => {
+      if (sw instanceof HTMLInputElement) {
+        sw.checked = isDarkTheme;
+      }
+    });
     document.documentElement.classList.toggle("dark", isDarkTheme);
   }
 
@@ -70,13 +82,13 @@ const { className }: { className?: string } = Astro.props;
     toggleTheme(themeSwitch);
     themeSwitch.forEach((sw) => {
       sw.addEventListener("click", function () {
-        const defaulTheme =
+        const defaultTheme =
           settings.default_theme === "system"
             ? matchMedia.matches
               ? "dark"
               : "light"
             : settings.default_theme;
-        const currentTheme = localStorage.getItem("theme") || defaulTheme;
+        const currentTheme = localStorage.getItem("theme") || defaultTheme;
         const newTheme = currentTheme === "light" ? "dark" : "light";
         localStorage.setItem("theme", newTheme);
         toggleTheme(themeSwitch);

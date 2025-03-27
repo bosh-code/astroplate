@@ -1,17 +1,19 @@
-import React from "react";
-function Video({
-  title,
-  width = 500,
-  height = "auto",
-  src,
-  ...rest
-}: {
+import React, { type FC } from "react";
+
+type VideoProps = Readonly<{
   title: string;
   width: number;
   height: number | "auto";
   src: string;
-  [key: string]: any;
-}) {
+}>;
+
+const Video: FC<VideoProps> = ({
+  title,
+  width = 500,
+  height,
+  src,
+  ...rest
+}) => {
   return (
     <video
       className="overflow-hidden rounded-lg"
@@ -27,6 +29,6 @@ function Video({
       {title}
     </video>
   );
-}
+};
 
 export default Video;

@@ -1,5 +1,12 @@
-// similar products
-const similarItems = (currentItem: any, allItems: any[]) => {
+export interface Item {
+  id: string;
+  data: {
+    categories: string[];
+    tags: string[];
+  };
+}
+
+const similarItems = (currentItem: Item, allItems: Item[]): Item[] => {
   let categories: string[] = [];
   let tags: string[] = [];
 
@@ -14,24 +21,20 @@ const similarItems = (currentItem: any, allItems: any[]) => {
   }
 
   // filter by categories
-  const filterByCategories = allItems.filter((item: any) =>
-    categories.find((category) => item.data.categories.includes(category)),
+  const filterByCategories = allItems.filter((item) =>
+    categories.some((category) => item.data.categories.includes(category)),
   );
 
   // filter by tags
-  const filterByTags = allItems.filter((item: any) =>
-    tags.find((tag) => item.data.tags.includes(tag)),
+  const filterByTags = allItems.filter((item) =>
+    tags.some((tag) => item.data.tags.includes(tag)),
   );
 
   // merged after filter
   const mergedItems = [...new Set([...filterByCategories, ...filterByTags])];
 
   // filter by slug
-  const filterBySlug = mergedItems.filter(
-    (product) => product.id !== currentItem.id,
-  );
-
-  return filterBySlug;
+  return mergedItems.filter((product) => product.id !== currentItem.id);
 };
 
 export default similarItems;

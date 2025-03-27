@@ -3,8 +3,8 @@ import BlogCard from "@/components/BlogCard.astro";
 import Pagination from "@/components/Pagination.astro";
 import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
-import { getSinglePage } from "@/lib/contentParser.astro";
-import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser.astro";
+import { getSinglePage } from "@/lib/contentParser";
+import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser";
 import { sortByDate } from "@/lib/utils/sortFunctions";
 import PageHeader from "@/partials/PageHeader.astro";
 import PostSidebar from "@/partials/PostSidebar.astro";
@@ -38,8 +38,8 @@ export async function getStaticPaths() {
   for (let i = 1; i < totalPages; i++) {
     paths.push({
       params: {
-        slug: (i + 1).toString(),
-      },
+        slug: (i + 1).toString()
+      }
     });
   }
   return paths;

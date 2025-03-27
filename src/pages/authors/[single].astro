@@ -3,7 +3,7 @@ import BlogCard from "@/components/BlogCard.astro";
 import ImageMod from "@/components/ImageMod.astro";
 import Social from "@/components/Social.astro";
 import Base from "@/layouts/Base.astro";
-import { getSinglePage } from "@/lib/contentParser.astro";
+import { getSinglePage } from "@/lib/contentParser";
 import { slugify } from "@/lib/utils/textConverter";
 import { render } from "astro:content";
 
@@ -14,9 +14,9 @@ export async function getStaticPaths() {
 
   const paths = authors.map((author) => ({
     params: {
-      single: author.id,
+      single: author.id
     },
-    props: { author },
+    props: { author }
   }));
   return paths;
 }

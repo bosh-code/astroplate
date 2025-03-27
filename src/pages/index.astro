@@ -21,17 +21,17 @@ interface Homepage {
 
 const homepage = (await getEntry(
   "homepage",
-  "-index"
+  "-index",
 )) as CollectionEntry<"homepage">;
 
 const testimonial = (await getEntry(
   "testimonialSection",
-  "testimonial"
+  "testimonial",
 )) as CollectionEntry<"testimonialSection">;
 
 const call_to_action = (await getEntry(
   "ctaSection",
-  "call-to-action"
+  "call-to-action",
 )) as CollectionEntry<"ctaSection">;
 
 const { banner, features } = homepage.data as Homepage;
@@ -84,11 +84,16 @@ const { banner, features } = homepage.data as Homepage;
   <!-- Features -->
   {
     features.map((feature, index: number) => (
-      <section class={`section-sm ${index % 2 === 0 && "bg-gradient"}`}>
+      <section
+        class:list={[`section-sm`, `${index % 2 === 0 && "bg-gradient"}`]}
+      >
         <div class="container">
           <div class="row items-center justify-between">
             <div
-              class={`mb:md-0 mb-6 md:col-5 ${index % 2 !== 0 && "md:order-2"}`}
+              class:list={[
+                `mb:md-0 mb-6 md:col-5`,
+                `${index % 2 !== 0 && "md:order-2"}`,
+              ]}
             >
               <ImageMod
                 src={feature.image}
@@ -98,7 +103,12 @@ const { banner, features } = homepage.data as Homepage;
                 format="webp"
               />
             </div>
-            <div class={`md:col-7 lg:col-6 ${index % 2 !== 0 && "md:order-1"}`}>
+            <div
+              class:list={[
+                `md:col-7 lg:col-6`,
+                `${index % 2 !== 0 && "md:order-1"}`,
+              ]}
+            >
               <h2 set:html={markdownify(feature.title)} class="mb-4" />
               <p set:html={markdownify(feature.content)} class="mb-8 text-lg" />
               <ul>

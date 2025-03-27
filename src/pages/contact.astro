@@ -7,7 +7,7 @@ import type { CollectionEntry } from "astro:content";
 
 const contact = (await getEntry(
   "contact",
-  "-index"
+  "-index",
 )) as CollectionEntry<"contact">;
 const { contact_form_action }: { contact_form_action: string } = config.params;
 const { title, description, meta_title, image } = contact.data;
@@ -30,6 +30,7 @@ const { title, description, meta_title, image } = contact.data;
                 Full Name <span class="text-red-500">*</span>
               </label>
               <input
+                aria-label="Full Name"
                 id="name"
                 name="name"
                 class="form-input"
@@ -42,6 +43,7 @@ const { title, description, meta_title, image } = contact.data;
                 Working Mail <span class="text-red-500">*</span>
               </label>
               <input
+                aria-label="Email"
                 id="email"
                 name="email"
                 class="form-input"
@@ -54,6 +56,7 @@ const { title, description, meta_title, image } = contact.data;
                 Anything else? <span class="text-red-500">*</span>
               </label>
               <textarea
+                aria-label="Message"
                 id="message"
                 name="message"
                 class="form-input"

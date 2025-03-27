@@ -1,7 +1,13 @@
 ---
-import { humanize } from "@/lib/utils/textConverter";
+import { humanize } from "../../lib/utils/textConverter";
 
-const { tags, categories, allCategories } = Astro.props;
+type Props = Readonly<{
+  tags: string[];
+  categories: string[];
+  allCategories: string[];
+}>;
+
+const { tags, categories, allCategories } = Astro.props as Props;
 ---
 
 <div class="lg:col-4">
@@ -11,10 +17,8 @@ const { tags, categories, allCategories } = Astro.props;
     <div class="rounded bg-light p-8 dark:bg-darkmode-light">
       <ul class="space-y-4">
         {
-          categories.map((category: any) => {
-            const count = allCategories.filter(
-              (c: any) => c === category
-            ).length;
+          categories.map((category) => {
+            const count = allCategories.filter((c) => c === category).length;
             return (
               <li>
                 <a
@@ -36,7 +40,7 @@ const { tags, categories, allCategories } = Astro.props;
     <div class="rounded bg-light p-6 dark:bg-darkmode-light">
       <ul>
         {
-          tags.map((tag: any) => {
+          tags.map((tag) => {
             return (
               <li class="inline-block">
                 <a

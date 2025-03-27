@@ -1,13 +1,12 @@
 import { humanize } from "@/lib/utils/textConverter";
-import React from "react";
+import React, { type FC, type ReactNode } from "react";
 
-function Notice({
-  type,
-  children,
-}: {
+type NoticeProps = Readonly<{
   type: string;
-  children: React.ReactNode;
-}) {
+  children: ReactNode;
+}>;
+
+const Notice: FC<NoticeProps> = ({ type, children }) => {
   return (
     <div className={`notice ${type}`}>
       <div className="notice-head">
@@ -80,6 +79,6 @@ function Notice({
       <div className="notice-body">{children}</div>
     </div>
   );
-}
+};
 
 export default Notice;

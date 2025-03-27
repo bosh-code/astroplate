@@ -1,16 +1,13 @@
-import React from "react";
+import React, { type FC } from "react";
 
-const Button = ({
-  label,
-  link,
-  style,
-  rel,
-}: {
+type ButtonProps = Readonly<{
   label: string;
   link: string;
   style?: string;
   rel?: string;
-}) => {
+}>;
+
+const Button: FC<ButtonProps> = ({ label, link, style, rel }) => {
   return (
     <a
       href={link}

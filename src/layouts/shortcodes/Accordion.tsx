@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 
-const Accordion = ({
-  title,
-  children,
-  className,
-}: {
+type AccordionProps = Readonly<{
   title: string;
   children: React.ReactNode;
   className?: string;
+}>;
+
+const Accordion: React.FC<AccordionProps> = ({
+  title,
+  children,
+  className,
 }) => {
   const [show, setShow] = useState(false);
 
   return (
-    <div className={`accordion ${show && "active"} ${className}`}>
+    <div className={`accordion ${show ? "active" : ""} ${className || ""}`}>
       <button className="accordion-header" onClick={() => setShow(!show)}>
         {title}
         <svg
@@ -28,7 +30,7 @@ const Accordion = ({
           ></path>
         </svg>
       </button>
-      <div className="accordion-content">{children}</div>
+      {show && <div className="accordion-content">{children}</div>}
     </div>
   );
 };

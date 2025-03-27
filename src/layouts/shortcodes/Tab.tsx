@@ -1,7 +1,12 @@
-import React from "react";
+import React, { type FC, type ReactNode } from "react";
 
-function Tab({ name, children }: { name: string; children: React.ReactNode }) {
+type TapProps = Readonly<{
+  name: string;
+  children: ReactNode;
+}>;
+
+const Tab: FC<TapProps> = ({ name, children }) => {
   return <div data-name={name}>{children}</div>;
-}
+};
 
 export default Tab;

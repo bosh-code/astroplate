@@ -1,8 +1,10 @@
 import config from "@/config/config.json";
 import { DiscussionEmbed } from "disqus-react";
-import React from "react";
+import React, { type FC } from "react";
 
-const Disqus = ({ className }: { className?: string }) => {
+type DisqusProps = Readonly<{ className?: string }>;
+
+const Disqus: FC<DisqusProps> = ({ className }) => {
   const { disqus } = config;
   return (
     <div className={className}>
