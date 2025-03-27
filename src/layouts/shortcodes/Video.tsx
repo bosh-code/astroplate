@@ -1,4 +1,5 @@
 import React from "react";
+
 function Video({
   title,
   width = 500,
@@ -10,7 +11,6 @@ function Video({
   width: number;
   height: number | "auto";
   src: string;
-  [key: string]: any;
 }) {
   return (
     <video
