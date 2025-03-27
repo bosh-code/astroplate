@@ -1,11 +1,17 @@
 import { marked } from "marked";
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  type FC,
+  type ReactElement,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
-interface TabProps {
-  children: React.ReactElement & { props: { value: string } };
-}
+type TabProps = Readonly<{
+  children: ReactElement & { props: { value: string } };
+}>;
 
-const Tabs: React.FC<TabProps> = ({ children }) => {
+const Tabs: FC<TabProps> = ({ children }) => {
   const [active, setActive] = useState<number>(0);
   const [defaultFocus, setDefaultFocus] = useState<boolean>(false);
 

@@ -1,9 +1,9 @@
-import searchData from ".json/search.json";
-import React, { useEffect, useState } from "react";
+import React, { type FC, useEffect, useState } from "react";
 import SearchResult, { type ISearchItem } from "./SearchResult";
+import searchData from ".json/search.json";
 
-const SearchModal = () => {
-  const [searchString, setSearchString] = useState("");
+const SearchModal: FC = () => {
+  const [searchString, setSearchString] = useState<string>("");
 
   // handle input change
   const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
@@ -11,12 +11,12 @@ const SearchModal = () => {
   };
 
   // generate search result
-  const doSearch = (searchData: ISearchItem[]) => {
+  const doSearch = (searchData: ISearchItem[]): ISearchItem[] => {
     const regex = new RegExp(`${searchString}`, "gi");
     if (searchString === "") {
       return [];
     } else {
-      const searchResult = searchData.filter((item) => {
+      return searchData.filter((item) => {
         const title = item.frontmatter.title.toLowerCase().match(regex);
         const description = item.frontmatter.description
           ?.toLowerCase()
@@ -31,19 +31,22 @@ const SearchModal = () => {
           .match(regex);
         const content = item.content.toLowerCase().match(regex);
 
-        if (title || content || description || categories || tags) {
-          return item;
-        }
+        return title || content || description || categories || tags;
       });
-      return searchResult;
     }
   };
 
   // get search result
-  const startTime = performance.now();
-  const searchResult = doSearch(searchData);
-  const endTime = performance.now();
-  const totalTime = ((endTime - startTime) / 1000).toFixed(3);
+  const searchResult = React.useMemo(() => {
+    const startTime = performance.now();
+    const result = doSearch(searchData);
+    const endTime = performance.now();
+
+    return {
+      items: result,
+      totalTime: ((endTime - startTime) / 1000).toFixed(3),
+    };
+  }, [searchString]);
 
   // search dom manipulation
   useEffect(() => {
@@ -58,7 +61,6 @@ const SearchModal = () => {
     // search modal open
     searchModalTriggers.forEach((button) => {
       button.addEventListener("click", function () {
-        const searchModal = document.getElementById("searchModal");
         searchModal!.classList.add("show");
         searchInput!.focus();
       });
@@ -87,7 +89,7 @@ const SearchModal = () => {
       });
     };
 
-    document.addEventListener("keydown", function (event) {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.key === "k") {
         searchModal!.classList.add("show");
         searchInput!.focus();
@@ -119,7 +121,14 @@ const SearchModal = () => {
       }
 
       updateSelection();
-    });
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    // Cleanup
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, [searchString]);
 
   return (
@@ -172,7 +181,10 @@ const SearchModal = () => {
             autoComplete="off"
           />
         </div>
-        <SearchResult searchResult={searchResult} searchString={searchString} />
+        <SearchResult
+          searchResult={searchResult.items}
+          searchString={searchString}
+        />
         <div className="search-wrapper-footer">
           <span className="flex items-center">
             <kbd>
@@ -215,8 +227,8 @@ const SearchModal = () => {
           </span>
           {searchString && (
             <span>
-              <strong>{searchResult.length} </strong> results - in{" "}
-              <strong>{totalTime} </strong> seconds
+              <strong>{searchResult.items.length} </strong> results - in{" "}
+              <strong>{searchResult.totalTime} </strong> seconds
             </span>
           )}
           <span>

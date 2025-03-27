@@ -1,5 +1,5 @@
 import { plainify, titleify } from "@/lib/utils/textConverter";
-import React from "react";
+import React, { type FC } from "react";
 
 export interface ISearchItem {
   group: string;
@@ -29,17 +29,20 @@ export interface ISearchGroup {
   }[];
 }
 
-// search result component
-const SearchResult = ({
-  searchResult,
-  searchString,
-}: {
+type SearchResultProps = Readonly<{
   searchResult: ISearchItem[];
   searchString: string;
+}>;
+
+// TODO: Split this up
+// search result component
+const SearchResult: FC<SearchResultProps> = ({
+  searchResult,
+  searchString,
 }) => {
   // generate search result group
   const generateSearchGroup = (searchResult: ISearchItem[]) => {
-    const joinDataByGroup: ISearchGroup[] = searchResult.reduce(
+    return searchResult.reduce(
       (groupItems: ISearchGroup[], item: ISearchItem) => {
         const groupIndex = groupItems.findIndex(
           (group) => group.group === item.group,
@@ -67,7 +70,6 @@ const SearchResult = ({
       },
       [],
     );
-    return joinDataByGroup;
   };
   const finalResult = generateSearchGroup(searchResult);
 
