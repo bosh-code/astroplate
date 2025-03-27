@@ -15,6 +15,7 @@ export const getSinglePage = async <C extends CollectionKey>(
   const allPages = await getCollection(collectionName);
 
   return allPages.filter(
-    (entry) => !entry.data.draft && !entry.id.startsWith("-"),
+    (entry: { data: { draft: string }; id: string }) =>
+      !entry.data.draft && !entry.id.startsWith("-"),
   );
 };
